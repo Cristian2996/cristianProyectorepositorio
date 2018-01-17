@@ -1,6 +1,6 @@
 package unach.trabajogithub.entidades;
 
-import java.sql.Date;
+import java.util.Date;
 import javafx.scene.chart.PieChart.Data;
 
 public class Publicaciones {

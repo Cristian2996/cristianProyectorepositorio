@@ -1,6 +1,6 @@
 package unach.trabajogithub.entidades;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Usuarios {
 private int id_usuario;    

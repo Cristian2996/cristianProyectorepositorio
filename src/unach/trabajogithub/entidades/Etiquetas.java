@@ -1,10 +1,10 @@
 
 package unach.trabajogithub.entidades;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Etiquetas {
-    private int id_etiqueta;
+     private int id_etiqueta;
     private String nombre;
     private Date creado;
     private Date actualizado;
@@ -19,15 +19,7 @@ public class Etiquetas {
         this.actualizado = actualizado;
     }
 
-    public Date getActualizado() {
-        return actualizado;
-    }
-
-    public void setActualizado(Date actualizado) {
-        this.actualizado = actualizado;
-    }
-
-    public int getId_etiqueta() {
+    public long getId_etiqueta() {
         return id_etiqueta;
     }
 
@@ -49,6 +41,14 @@ public class Etiquetas {
 
     public void setCreado(Date creado) {
         this.creado = creado;
+    }
+
+    public Date getActualizado() {
+        return actualizado;
+    }
+
+    public void setActualizado(Date actualizado) {
+        this.actualizado = actualizado;
     }
     
 }
