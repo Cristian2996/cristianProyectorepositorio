@@ -1,6 +1,6 @@
 package unach.trabajogithub.test;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import static junit.framework.Assert.assertEquals;

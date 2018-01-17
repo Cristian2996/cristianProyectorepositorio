@@ -1,5 +1,6 @@
 package unach.trabajogithub.test;
 
+import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
@@ -21,7 +22,7 @@ public class testUsuarios {
         IUsuarios usuariosDao = new ImplUsuarios();
         IRoles rolesDao = new ImplRoles();
         Roles roles = rolesDao.obtener("1");
-        Usuarios usuarios = new Usuarios(1215,roles, "Carlos", "carlosmorales@gmail.com", "1224566777",'2017-05-05','2016-03-03');
+        Usuarios usuarios = new Usuarios(1215,roles, "Carlos", "carlosmorales@gmail.com", "1224566777",new Date(),new Date());
         try {
             filasAfectadas = usuariosDao.insertar(usuarios);
             System.out.println("Usuario ingresado!!!\n");
