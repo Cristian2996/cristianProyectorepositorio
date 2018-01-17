@@ -2,6 +2,7 @@ package unach.trabajogithub.dao;
 
 import java.util.ArrayList;
 import unach.trabajogithub.entidades.Roles;
+import java.util.*;
 
 public interface IRoles {
 public int insertar (Roles roles) throws Exception;
