@@ -6,6 +6,8 @@ import unach.trabajogithub.dao.INiveles;
 import unach.trabajogithub.entidades.Niveles;
 import unach.trabajohithub.accesodatos.Conexion;
 import unach.trabajohithub.accesodatos.Parametro;
+import java.util.*;
+import java.sql.*;
 
 public class ImplNiveles implements INiveles {
 @Override
@@ -42,7 +44,7 @@ public class ImplNiveles implements INiveles {
     }
 
     @Override
-    public Niveles obtener(String id_niveles) throws Exception {
+    public Niveles obtener(int id_niveles) throws Exception {
         Niveles niv = null;
         String csql = "Select id_niveles, nombre, creado, actualizado From Niveles Where id_niveles=?";
         ArrayList<Parametro> lstPar = new ArrayList<>();

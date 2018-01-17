@@ -6,95 +6,95 @@ import unach.trabajogithub.dao.IEtiquetas;
 import unach.trabajogithub.entidades.Etiquetas;
 import unach.trabajohithub.accesodatos.Conexion;
 import unach.trabajohithub.accesodatos.Parametro;
+import java.sql.*;
 
 public class ImplEtiquetas implements IEtiquetas {
-    @Override
+   @Override
     public int insertar(Etiquetas etiquetas) throws Exception {
- int nFilas = 0;
-        String csql = "Insert into Etiquetas (id_etiqueta, nombre, creado, actualizado) Values (?,?,?,?)";
-        ArrayList<Parametro> lstP = new ArrayList<>();
-        lstP.add(new Parametro(1, etiquetas.getId_etiqueta()));
-        lstP.add(new Parametro(2, etiquetas.getNombre()));
-         if (etiquetas.getCreado() instanceof java.util.Date) {
-            lstP.add(new Parametro(3, new java.sql.Date(((java.util.Date) etiquetas.getCreado()).getTime())));
+        int numFilas = 0;
+        String sqlC = "INSERT INTO Etiquetas (id_etiqueta, nombre, creado, actualizado) VALUES (?,?,?,?)";
+        ArrayList<Parametro> lisParametros = new ArrayList<>();
+        lisParametros.add(new Parametro(1, etiquetas.getId_etiqueta()));
+        lisParametros.add(new Parametro(2, etiquetas.getNombre()));
+        if (etiquetas.getCreado() instanceof java.util.Date) {
+            lisParametros.add(new Parametro(3, new java.sql.Date(((java.util.Date) etiquetas.getCreado()).getTime())));
         } else {
-            lstP.add(new Parametro(3, etiquetas.getCreado()));
+            lisParametros.add(new Parametro(3, etiquetas.getCreado()));
         }
-        if (etiquetas.getActualizado() instanceof java.util.Date) {
-            lstP.add(new Parametro(4, new java.sql.Date(((java.util.Date) etiquetas.getActualizado()).getTime())));
+        if (etiquetas.getCreado() instanceof java.util.Date) {
+            lisParametros.add(new Parametro(4, new java.sql.Date(((java.util.Date) etiquetas.getActualizado()).getTime())));
         } else {
-            lstP.add(new Parametro(4, etiquetas.getActualizado()));
+            lisParametros.add(new Parametro(4, etiquetas.getActualizado()));
         }
         Conexion con = null;
         try {
             con = new Conexion();
             con.conectar();
-            nFilas = con.ejecutarComando(csql, lstP);
+            numFilas = con.ejecutarComando(sqlC, lisParametros);
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage() + " " + e.getLocalizedMessage());
+            System.out.println("error: " + e.getMessage());
         } finally {
             if (con != null) {
                 con.desconectar();
             }
         }
-        return nFilas;
-    
+        return numFilas;
     }
 
-    @Override
-    public Etiquetas obtener(String id_etiqueta) throws Exception {
-        Etiquetas eti = null;
-        String csql = "Select id_etiqueta, nombre, creado, actualizado From Etiquetas Where id_etiqueta=?";
-        ArrayList<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, id_etiqueta));
+     @Override
+    public Etiquetas obtener(int id_etiqueta) throws Exception {
+        Etiquetas elEtiqueta = null;
+        String sqlC = "SELECT id_etiqueta, nombre, creado, actualizado FROM Etiquetas Where id_etiqueta=?";
+        ArrayList<Parametro> lisParametros = new ArrayList<>();
+        lisParametros.add(new Parametro(1, id_etiqueta));
         Conexion con = null;
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutarQuery(csql, lstPar);
+            ResultSet rst = con.ejecutarQuery(sqlC, lisParametros);
             while (rst.next()) {
-                eti=new Etiquetas();
-                eti.setId_etiqueta(rst.getInt(1));
-                eti.setNombre(rst.getString(2));
-                eti.setCreado(rst.getDate(3));
-                eti.setActualizado(rst.getDate(4));
-                
+                elEtiqueta = new Etiquetas();
+                elEtiqueta.setId_etiqueta(rst.getInt(1));
+                elEtiqueta.setNombre(rst.getString(2));
+                elEtiqueta.setCreado(rst.getDate(3));
+                elEtiqueta.setActualizado(rst.getDate(4));
             }
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage() + " " + e.getLocalizedMessage());
+            System.out.println("Error: " + e.getMessage());
         } finally {
             if (con != null) {
                 con.desconectar();
             }
         }
-        return eti;
+        return elEtiqueta;
     }
 
     @Override
     public ArrayList<Etiquetas> obtener() throws Exception {
-         ArrayList<Etiquetas> etiq = new ArrayList<>();
-        String csql="select id_etiqueta, nombre, creado, actualizado from Etiquetas";
-        Conexion con=null;
+        ArrayList<Etiquetas> listEtiqueta = new ArrayList<>();
+        Etiquetas nEtiqueta = null;
+        String sqlC = "Select id_etiqueta, nombre, creado, actualizado from Etiquetas";
+        Conexion con = null;
         try {
-            con=new Conexion();
+            con = new Conexion();
             con.conectar();
-            ResultSet rst=con.ejecutarQuery(csql, null);
-            Etiquetas eti=null;
-            while(rst.next()){
-                eti=new Etiquetas();
-                eti.setId_etiqueta(rst.getInt(1));
-                eti.setNombre(rst.getString(2));
-                eti.setCreado(rst.getDate(3));
-                eti.setActualizado(rst.getDate(4));
-                etiq.add(eti);
+            ResultSet rst = con.ejecutarQuery(sqlC, null);
+            while (rst.next()) {
+                nEtiqueta = new Etiquetas();
+                nEtiqueta.setId_etiqueta(rst.getInt(1));
+                nEtiqueta.setNombre(rst.getString(2));
+                nEtiqueta.setCreado(rst.getDate(3));
+                nEtiqueta.setActualizado(rst.getDate(4));
+                listEtiqueta.add(nEtiqueta);
             }
         } catch (Exception e) {
-            throw e;
-        } finally{
-            if(con!=null){
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            if (con != null) {
                 con.desconectar();
             }
         }
-        return etiq;
-    }    
+        return listEtiqueta;
+    }
+
 }

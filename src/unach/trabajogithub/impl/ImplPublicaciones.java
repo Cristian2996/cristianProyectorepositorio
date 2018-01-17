@@ -65,7 +65,7 @@ public class ImplPublicaciones implements IPublicaciones {
                 usuarios = new Usuarios();
                 usuarios =usuariosDao.obtener(rst.getInt(2));
                 niveles = new Niveles();
-                niveles=nivelesDao.obtener(rst.getString(3));
+                niveles=nivelesDao.obtener(rst.getInt(3));
                 publi=new Publicaciones();
                 publi.setId_publicaciones(rst.getInt(1));
                 publi.setUsuarios(usuarios);
@@ -106,7 +106,7 @@ public class ImplPublicaciones implements IPublicaciones {
                 usuarios = new Usuarios();
                 usuarios = usuariosDao.obtener(rst.getInt(2));
                 niveles = new Niveles();
-                niveles = nivelesDao.obtener(rst.getString(3));
+                niveles = nivelesDao.obtener(rst.getInt(3));
                 publi=new Publicaciones();
                 publi.setId_publicaciones(rst.getInt(1));
                 publi.setUsuarios(usuarios);

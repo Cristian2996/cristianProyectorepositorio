@@ -61,7 +61,7 @@ public class ImplEtiquetaspublicaciones implements IEtiquetaspublicaciones{
             ResultSet rst = con.ejecutarQuery(csql, lstPar);
             while (rst.next()) {
                 etiquetas = new Etiquetas();
-                etiquetas=etiquetasDao.obtener(rst.getString(1));
+                etiquetas=etiquetasDao.obtener(rst.getInt(1));
                 publicaciones = new Publicaciones();
                 publicaciones=publicacionesDao.obtener(rst.getInt(2));
                 publieti=new Etiquetaspublicaciones();
@@ -96,7 +96,7 @@ public class ImplEtiquetaspublicaciones implements IEtiquetaspublicaciones{
             Etiquetaspublicaciones publieti=null;
             while(rst.next()){
                 etiquetas = new Etiquetas();
-                etiquetas=etiquetasDao.obtener(rst.getString(1));
+                etiquetas=etiquetasDao.obtener(rst.getInt(1));
                 publicaciones = new Publicaciones();
                 publicaciones=publicacionesDao.obtener(rst.getInt(2));
                 publieti=new Etiquetaspublicaciones();
