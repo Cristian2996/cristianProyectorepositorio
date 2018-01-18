@@ -6,6 +6,6 @@ import java.util.*;
 
 public interface IEtiquetaspublicaciones {
     public int insertar (Etiquetaspublicaciones etiquetaspublicacion) throws Exception;
-    public Etiquetaspublicaciones obtener(int id_etiqueta,int id_publicaciones) throws Exception;
+    public Etiquetaspublicaciones obtener(int id_etipubli) throws Exception;
     public ArrayList<Etiquetaspublicaciones> obtener () throws Exception;
 }
