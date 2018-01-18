@@ -22,10 +22,10 @@ public class testPublicaciones {
         //              INSERTAR
         int filasAfectadas = 0;
         IPublicaciones publicacionesDao = new ImplPublicaciones();
-        Roles roles = new Roles(456,"Marlon",new Date(),new Date());
-        Usuarios usuarios = new Usuarios(123,roles,"Danilo","merino1212@gmail.com","23456781a",new Date(),new Date());
-        Niveles niveles = new Niveles(789,"Luis",new Date(),new Date());
-        Publicaciones publicaciones = new Publicaciones(1215,usuarios,niveles,"Los Planchados", "Proyecto de planchado", "Dia Lunes", 100, 200,new Date(),new Date());
+        Roles roles = new Roles(51,"Marlon",new Date(),new Date());
+        Usuarios usuarios = new Usuarios(61,roles,"Danilo","merino1212@gmail.com","23456781a",new Date(),new Date());
+        Niveles niveles = new Niveles(3,"Luis",new Date(),new Date());
+        Publicaciones publicaciones = new Publicaciones(121,usuarios,niveles,"Los Planchados", "Proyecto de planchado", "Dia Lunes", 100, 200,new Date(),new Date());
         try {
             filasAfectadas = publicacionesDao.insertar(publicaciones);
             System.out.println("Publicacion ingresado!!!\n");

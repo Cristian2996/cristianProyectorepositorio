@@ -14,25 +14,25 @@ public class testEtiquetaspublicaciones {
 
     public testEtiquetaspublicaciones() {
     }
- @Test
-    public void pruebageneral() throws Exception{
-        //              INSERTAR
-        int filasAfectadas =0;
+  @Test
+    public void testGeneral() {
         IEtiquetaspublicaciones etiquetaspublicacionesDao = new ImplEtiquetaspublicaciones();
-        IEtiquetas etiquetasDao = new ImplEtiquetas();
-        Etiquetas etiquetas = etiquetasDao.obtener(1);
-        IPublicaciones publicacionesDao = new ImplPublicaciones();
-        Publicaciones publicaciones = publicacionesDao.obtener(1);
-        Etiquetaspublicaciones etiquetaspublicaciones = new Etiquetaspublicaciones(etiquetas,publicaciones,new Date(),new Date());
-        
-        try{
-            filasAfectadas = etiquetaspublicacionesDao.insertar(etiquetaspublicaciones);
-            System.out.println("Ingresado!!!\n");
-        }catch(Exception e){
-            System.out.println("Error: "+e.getMessage());
+        //TEST INSERTAR
+        int filas = 0;
+        Etiquetas etiq=new Etiquetas(12, "Lopez", new Date(), new Date());
+        Roles nRol = new Roles(52, "MArlon", new Date(), new Date());
+        Usuarios user = new Usuarios(62,nRol,"Marcelo" , "Lora", "Abril", new Date(), new Date());
+        Niveles nuevoNivel=new Niveles(32, "jhon", new Date(), new Date());
+        Publicaciones pulblicar=new Publicaciones(43, user, nuevoNivel, "123532", "ljsr", "Enero", 35, 7, new Date(), new Date());
+        Etiquetaspublicaciones nEtiqPublic=new Etiquetaspublicaciones(etiq, pulblicar, new Date(), new Date());
+        try {
+            filas = etiquetaspublicacionesDao.insertar(nEtiqPublic);
+            System.out.println("filas Insertadas:" + filas);
+        } catch (Exception e) {
         }
-        assertEquals(filasAfectadas>0, true);
-        //              LISTADO DE PEdido
+        assertEquals(filas > 0, true);
+        
+             //              LISTADO DE PEdido
         List<Etiquetaspublicaciones> lista = new ArrayList<>();
         try {
             lista = etiquetaspublicacionesDao.obtener();
