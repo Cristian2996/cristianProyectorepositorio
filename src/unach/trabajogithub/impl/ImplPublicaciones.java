@@ -54,7 +54,7 @@ public class ImplPublicaciones implements IPublicaciones {
         IUsuarios usuariosDao=new ImplUsuarios();
         Niveles niveles=null;
         INiveles nivelesDao=new ImplNiveles();
-        String csql = "Select id_publicaiones, id_usuario, id_niveles, titulo, contenido, publicado,vistas, votos, creado, actualizado  From Publicaciones Where id_publicaciones=?";
+        String csql = "Select id_publicaciones, id_usuario, id_niveles, titulo, contenido, publicado,vistas, votos, creado, actualizado  From Publicaciones Where id_publicaciones=?";
         ArrayList<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, id_publicaciones));
         Conexion con = null;
@@ -95,7 +95,7 @@ public class ImplPublicaciones implements IPublicaciones {
         IUsuarios usuariosDao=new ImplUsuarios();
         Niveles niveles=null;
         INiveles nivelesDao=new ImplNiveles();
-        String csql="select id_publicaiones, id_usuario, id_niveles, titulo, contenido, publicado,vistas, votos, creado, actualizado from Publicaciones";
+        String csql="select id_publicaciones, id_usuario, id_niveles, titulo, contenido, publicado,vistas, votos, creado, actualizado from Publicaciones";
         Conexion con=null;
         try {
             con=new Conexion();

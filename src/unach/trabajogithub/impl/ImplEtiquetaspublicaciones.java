@@ -16,9 +16,7 @@ public class ImplEtiquetaspublicaciones implements IEtiquetaspublicaciones{
         ArrayList<Parametro> lstP = new ArrayList<>();
         lstP.add(new Parametro(1, etiquetaspublicaciones.getEtiquetas().getId_etiqueta()));
         lstP.add(new Parametro(2, etiquetaspublicaciones.getPublicaciones().getId_publicaciones()));
-        lstP.add(new Parametro(3, etiquetaspublicaciones.getCreado()));
-        lstP.add(new Parametro(4, etiquetaspublicaciones.getActualizado()));
-          if (etiquetaspublicaciones.getCreado() instanceof java.util.Date) {
+        if (etiquetaspublicaciones.getCreado() instanceof java.util.Date) {
             lstP.add(new Parametro(3, new java.sql.Date(((java.util.Date) etiquetaspublicaciones.getCreado()).getTime())));
         } else {
             lstP.add(new Parametro(3, etiquetaspublicaciones.getCreado()));
@@ -45,7 +43,7 @@ public class ImplEtiquetaspublicaciones implements IEtiquetaspublicaciones{
     }
 
     @Override
-    public Etiquetaspublicaciones obtener(int id_etiqueta,int id_publicaciones) throws Exception {
+    public Etiquetaspublicaciones obtener(int id_etipubli) throws Exception {
         Etiquetaspublicaciones publieti = null;
         Etiquetas etiquetas=null;
         IEtiquetas etiquetasDao=new ImplEtiquetas();
@@ -53,8 +51,7 @@ public class ImplEtiquetaspublicaciones implements IEtiquetaspublicaciones{
         IPublicaciones publicacionesDao=new ImplPublicaciones();
         String csql = "Select id_etiqueta, id_publicaciones, creado, actualizado  From Etiquetaspublicaciones Where id_etiqueta=?";
         ArrayList<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, id_etiqueta));
-        lstPar.add(new Parametro(2, id_publicaciones));
+        lstPar.add(new Parametro(1, id_etipubli));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -67,8 +64,8 @@ public class ImplEtiquetaspublicaciones implements IEtiquetaspublicaciones{
                 publieti=new Etiquetaspublicaciones();
                 publieti.setEtiquetas(etiquetas);
                 publieti.setPublicaciones(publicaciones);
-                publieti.setCreado(rst.getDate(9));
-                publieti.setActualizado(rst.getDate(10));
+                publieti.setCreado(rst.getDate(3));
+                publieti.setActualizado(rst.getDate(4));
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage() + " " + e.getLocalizedMessage());
