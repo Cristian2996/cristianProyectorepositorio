@@ -12,7 +12,7 @@ public class ImplEtiquetaspublicaciones implements IEtiquetaspublicaciones{
     @Override
     public int insertar(Etiquetaspublicaciones etiquetaspublicaciones) throws Exception {
         int nFilas = 0;
-        String csql = "Insert into Publicaciones (id_etiqueta, id_publicaciones, creado, actualizado) Values (?,?,?,?)";
+        String csql = "Insert into Etiquetaspublicaciones (id_etiqueta, id_publicaciones, creado, actualizado) Values (?,?,?,?)";
         ArrayList<Parametro> lstP = new ArrayList<>();
         lstP.add(new Parametro(1, etiquetaspublicaciones.getEtiquetas().getId_etiqueta()));
         lstP.add(new Parametro(2, etiquetaspublicaciones.getPublicaciones().getId_publicaciones()));
@@ -51,7 +51,7 @@ public class ImplEtiquetaspublicaciones implements IEtiquetaspublicaciones{
         IEtiquetas etiquetasDao=new ImplEtiquetas();
         Publicaciones publicaciones=null;
         IPublicaciones publicacionesDao=new ImplPublicaciones();
-        String csql = "Select id_etiqueta, id_publicaiones, creado, actualizado  From Etiquetaspublicaciones Where id_etiqueta=?";
+        String csql = "Select id_etiqueta, id_publicaciones, creado, actualizado  From Etiquetaspublicaciones Where id_etiqueta=?";
         ArrayList<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, id_etiqueta));
         lstPar.add(new Parametro(2, id_publicaciones));
@@ -87,7 +87,7 @@ public class ImplEtiquetaspublicaciones implements IEtiquetaspublicaciones{
         IEtiquetas etiquetasDao=new ImplEtiquetas();
         Publicaciones publicaciones=null;
         IPublicaciones publicacionesDao=new ImplPublicaciones();
-        String csql="select id_etiqueta, id_publicaiones, creado, actualizado from Etiquetaspublicaciones";
+        String csql="select id_etiqueta, id_publicaciones, creado, actualizado from Etiquetaspublicaciones";
         Conexion con=null;
         try {
             con=new Conexion();
