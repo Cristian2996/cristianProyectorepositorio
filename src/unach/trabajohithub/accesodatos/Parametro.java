@@ -3,7 +3,7 @@ import java.util.*;
 import java.sql.*;
 
 public class Parametro {
-    private int posicion;
+ private int posicion;
     private Object valor;
 
     public Parametro() {
